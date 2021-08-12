@@ -1,0 +1,12 @@
+.movies h3, .movies ol{
+    color:orangered;
+}
+
+.movies h3 {
+    text-align: center;
+    font-size: x-large;
+}
+
+.movies ol {
+    font-size: larger;
+}
