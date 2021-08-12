@@ -3,10 +3,11 @@ h3 {
 }
 
 img {
-   max-width: 250px;
+   max-width: 30%;
    max-height: 600px;
 }
 
 .photos {
    text-align: center;
+   vertical-align: top;
 }
