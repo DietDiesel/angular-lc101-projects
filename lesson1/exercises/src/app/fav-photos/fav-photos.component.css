@@ -10,4 +10,6 @@ img {
 .photos {
    text-align: center;
    vertical-align: top;
+   border-left: 3px dashed black;
+   border-right: 3px dashed black;
 }
