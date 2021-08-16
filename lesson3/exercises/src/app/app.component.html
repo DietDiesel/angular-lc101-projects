@@ -2,7 +2,7 @@
    <div class="container-header">
       <h1>Flight Simulator</h1>
       <h2>Current Flight Status</h2>
-      <p>Space shuttle ready for takeoff!</p>
+      <p>{{message}}</p>
       <h2>Shuttle Trajectory</h2>
    </div>
    <div class="row justify-content-center">
@@ -16,25 +16,27 @@
       </div>
 
       <div class="col-6">
-         <div class="shuttle-background" style="background-color: green">
-            <img src="assets/images/LaunchCode_rocketline_white.png" height = "75" width = "75" [style.left]="0" [style.bottom]="0"/>
+         <div #field class="shuttle-background" [style.backgroundColor]="color">
+            <img #rocket src="assets/images/LaunchCode_rocketline_white.png" height = "75" width = "75" [style.left]="0" [style.bottom]="0"/>
          </div>
       </div>
 
       <div class="col-3">
          <div class="container-right"b>
-            <button>Up</button>
-            <button>Down</button>
-            <button>Right</button>
-            <button>Left</button>
+            <div *ngIf="shuttleInFlight">
+               <button [disabled]="maxUp" (click)="moveRocket(rocket, field, 'up')">Up</button>
+               <button [disabled]="maxDown" (click)="moveRocket(rocket, field, 'down')">Down</button>
+               <button [disabled]="maxRight" (click)="moveRocket(rocket, field, 'right')">Right</button>
+               <button [disabled]="maxLeft" (click)="moveRocket(rocket, field, 'left')">Left</button>
+            </div>
             <h3>Space Shuttle Height</h3>
-            <p>0 km</p>
+            <p>{{height}} km</p>
          </div>
       </div>
    </div>
    <div class="container-control-buttons">
-      <button>Take Off</button>
-      <button>Land</button>
-      <button>Abort Mission</button>
+      <button [disabled]="shuttleInFlight" (click)="handleTakeOff(rocket, field)">Take Off</button>
+      <button [disabled]="!shuttleInFlight" (click)="handleLanding(rocket, field)">Land</button>
+      <button [disabled]="!shuttleInFlight" (click)="handleAbort(rocket, field)">Abort Mission</button>
    </div>
 </div>
